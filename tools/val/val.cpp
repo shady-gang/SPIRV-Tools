@@ -70,6 +70,8 @@ Options:
                                    members.
   --allow-localsizeid              Allow use of the LocalSizeId decoration where it would otherwise not
                                    be allowed by the target environment.
+  --allow-linkage                  Allow use of the Linkage capability where it would otherwise not be
+                                   allowed by the target environment
   --allow-offset-texture-operand   Allow use of the Offset texture operands where it would otherwise not
                                    be allowed by the target environment.
   --allow-vulkan-32-bit-bitwise    Allow use of non-32 bit for the Base operand where it would otherwise
@@ -216,6 +218,8 @@ int main(int argc, char** argv) {
         options.SetSkipBlockLayout(true);
       } else if (0 == strcmp(cur_arg, "--allow-localsizeid")) {
         options.SetAllowLocalSizeId(true);
+      } else if (0 == strcmp(cur_arg, "--allow-linkage")) {
+        options.SetAllowLinkage(true);
       } else if (0 == strcmp(cur_arg, "--allow-offset-texture-operand")) {
         options.SetAllowOffsetTextureOperand(true);
       } else if (0 == strcmp(cur_arg, "--allow-vulkan-32-bit-bitwise")) {

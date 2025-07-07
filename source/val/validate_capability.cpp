@@ -27,6 +27,16 @@ namespace spvtools {
 namespace val {
 namespace {
 
+bool IsSupportForced(const spv_validator_options_t& options, uint32_t capability) {
+    switch (spv::Capability(capability)) {
+        case spv::Capability::Linkage:
+            return options.allow_linkage;
+        default:
+            break;
+    }
+    return false;
+}
+
 bool IsSupportGuaranteedVulkan_1_0(uint32_t capability) {
   switch (spv::Capability(capability)) {
     case spv::Capability::Matrix:
@@ -371,6 +381,9 @@ spv_result_t CapabilityPass(ValidationState_t& _, const Instruction* inst) {
     }
     return std::string(desc->name().data());
   };
+
+  if (IsSupportForced(*_.options(), capability))
+      return SPV_SUCCESS;
 
   const auto env = _.context()->target_env;
   const bool opencl_embedded = env == SPV_ENV_OPENCL_EMBEDDED_1_2 ||

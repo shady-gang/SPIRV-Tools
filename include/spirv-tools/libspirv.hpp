@@ -126,6 +126,12 @@ class SPIRV_TOOLS_EXPORT ValidatorOptions {
     spvValidatorOptionsSetAllowLocalSizeId(options_, val);
   }
 
+  // Enables Linkage capability where the environment would not otherwise
+  // allow them.
+  void SetAllowLinkage(bool val) {
+    spvValidatorOptionsSetAllowLinkage(options_, val);
+  }
+
   // Allow Offset (in addition to ConstOffset) for texture
   // operations. Was added for VK_KHR_maintenance8
   void SetAllowOffsetTextureOperand(bool val) {

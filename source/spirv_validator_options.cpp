@@ -126,6 +126,11 @@ void spvValidatorOptionsSetAllowLocalSizeId(spv_validator_options options,
   options->allow_localsizeid = val;
 }
 
+void spvValidatorOptionsSetAllowLinkage(spv_validator_options options,
+                                            bool val) {
+  options->allow_linkage = val;
+}
+
 void spvValidatorOptionsSetAllowOffsetTextureOperand(
     spv_validator_options options, bool val) {
   options->allow_offset_texture_operand = val;
